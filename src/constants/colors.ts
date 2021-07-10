@@ -5,8 +5,9 @@ const colors = {
   yellow: '#F2DF86',
   blue: '#9CC0EE',
   black: '#2C2B2B',
-  gray: '#DAD9DA',
+  gray: '#888888',
   backgroundGray: '#FAF9FA',
+  border: '#F4F4F5',
   white: '#FFF',
 };
 
