@@ -27,6 +27,34 @@
     "react-test-renderer": "17.0.1",
     "typescript": "^3.8.3"
   },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@react-native-community",
+      "prettier"
+    ],
+    "env": {
+      "jest": true
+    },
+    "rules": {
+      "react-hooks/exhaustive-deps": "off",
+      "no-console": "error",
+      "prettier/prettier": [
+        "error",
+        {
+          "quoteProps": "consistent",
+          "singleQuote": true,
+          "tabWidth": 2,
+          "trailingComma": "es5",
+          "useTabs": false
+        }
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ],
   "resolutions": {
     "@types/react": "^17"
   },
