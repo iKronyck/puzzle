@@ -14,7 +14,7 @@ import {
 } from '../../constants/selector';
 import {useAppContext} from '../../hooks/useAppContext';
 import {generateGuid} from '../../utils/guid';
-import colors from 'constants/colors';
+import colors from '../../constants/colors';
 
 export const AddTask: React.FC = () => {
   const [title, setTitle] = React.useState('');
