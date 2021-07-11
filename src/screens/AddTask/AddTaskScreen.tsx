@@ -7,6 +7,7 @@ import {
   ButtonContainer,
   TimeContainer,
   TimeInputContainer,
+  LastFieldContainer,
 } from './AddTaskScreen.styles';
 import {
   deadLineOptions,
@@ -61,7 +62,7 @@ export const AddTask: React.FC<AddTaskScreenProps> = ({navigation}) => {
   return (
     <Container>
       <Header goBack={() => navigation.goBack()} />
-      <Content bounces={false}>
+      <Content bounces={false} showsVerticalScrollIndicator={false}>
         <Input
           title={'Title'}
           value={title}
@@ -95,12 +96,14 @@ export const AddTask: React.FC<AddTaskScreenProps> = ({navigation}) => {
           title="Remind"
           options={remindOptions}
         />
-        <Selector
-          value={repeat}
-          setValue={text => setRepeat(text)}
-          title="Repeat"
-          options={repeatOptions}
-        />
+        <LastFieldContainer>
+          <Selector
+            value={repeat}
+            setValue={text => setRepeat(text)}
+            title="Repeat"
+            options={repeatOptions}
+          />
+        </LastFieldContainer>
       </Content>
       <ButtonContainer>
         <Button

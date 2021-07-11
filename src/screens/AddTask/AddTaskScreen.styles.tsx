@@ -8,7 +8,6 @@ export const Container = styled.View<ThemeProps>`
 
 export const Content = styled.ScrollView`
   padding: 20px 35px 0 35px;
-  display: flex;
   flex: 1px;
 `;
 
@@ -27,4 +26,8 @@ export const TimeInputContainer = styled.View<{isLeft?: boolean}>`
 export const ButtonContainer = styled.View`
   padding: 10px 0 10px 0;
   align-items: center;
+`;
+
+export const LastFieldContainer = styled.View`
+  margin-bottom: 20px;
 `;

@@ -26,6 +26,7 @@ export const InputHour: React.FC<InputHourProps> = ({
           placeholder={placeholder}
           value={value}
           onChangeText={onChangeText}
+          maxLength={8}
         />
         <Icon name="schedule" size={16} color={colors.gray} />
       </InputContainer>
