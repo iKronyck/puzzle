@@ -18,6 +18,12 @@ export const TimeContainer = styled.View`
   flex-direction: row;
 `;
 
+export const TimeInputContainer = styled.View<{isLeft?: boolean}>`
+  margin-left: ${props => `${!props.isLeft ? 5 : 0}px`};
+  margin-right: ${props => `${props.isLeft ? 5 : 0}px`};
+  flex: 1px;
+`;
+
 export const ButtonContainer = styled.View`
   padding: 10px 0 10px 0;
   align-items: center;

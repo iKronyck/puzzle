@@ -6,12 +6,15 @@ import {
   Container,
   ButtonContainer,
   TimeContainer,
+  TimeInputContainer,
 } from './AddTaskScreen.styles';
 import {
   deadLineOptions,
   remindOptions,
   repeatOptions,
 } from '../../constants/selector';
+import {useAppContext} from '../../hooks/useAppContext';
+import {generateGuid} from '../../utils/guid';
 
 export const AddTask: React.FC = () => {
   const [title, setTitle] = React.useState('');
@@ -21,8 +24,11 @@ export const AddTask: React.FC = () => {
   const [startTime, setStartTime] = React.useState('');
   const [endTime, setEndTime] = React.useState('');
 
+  const {addTask} = useAppContext();
+
   const createTask = () => {
     const task = {
+      id: generateGuid(),
       title,
       deadLine: deadline,
       startTime,
@@ -31,8 +37,9 @@ export const AddTask: React.FC = () => {
       repeat,
       createdAt: new Date(),
       isFavorite: false,
+      isFinished: false,
     };
-    console.log(task);
+    addTask(task);
   };
 
   return (
@@ -51,20 +58,20 @@ export const AddTask: React.FC = () => {
           options={deadLineOptions}
         />
         <TimeContainer>
-          <View style={{flex: 1, marginRight: 5}}>
+          <TimeInputContainer isLeft>
             <InputHour
               value={startTime}
               onChangeText={t => setStartTime(t)}
               title="Start time"
             />
-          </View>
-          <View style={{flex: 1, marginLeft: 5}}>
+          </TimeInputContainer>
+          <TimeInputContainer>
             <InputHour
               value={endTime}
               onChangeText={t => setEndTime(t)}
               title="End time"
             />
-          </View>
+          </TimeInputContainer>
         </TimeContainer>
         <Selector
           value={remind}
