@@ -52,8 +52,14 @@ export const useTask = () => {
       let allTasks = [...tasks];
       const index = allTasks.findIndex(task => task.id === id);
       allTasks[index].isFinished = !allTasks[index].isFinished;
+      const completed = allTasks.filter(task => task.isFinished === true);
+      const unCompleted = allTasks.filter(task => task.isFinished === false);
+      const favorites = allTasks.filter(task => task.isFavorite === true);
       await AsyncStorage.setItem('@tasks', JSON.stringify(allTasks));
       setTasks([...allTasks]);
+      setCompleted(completed);
+      setUnCompleted(unCompleted);
+      setFavorites(favorites);
     } catch (error) {
       console.error(error);
     } finally {
