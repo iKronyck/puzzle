@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {StyleSheet, Touchable, TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {CheckBox, Container, UnSelected} from './TaskItem.styles';
 import {Text} from '../Text';

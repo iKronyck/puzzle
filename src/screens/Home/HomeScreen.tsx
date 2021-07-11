@@ -112,6 +112,7 @@ export const Home: React.FC<HomeProps> = ({navigation}) => {
           <Button
             text="Add a task"
             onPress={() => navigation.navigate('AddTask')}
+            color={colors.white}
           />
         </ButtonContainer>
       </DataContainer>

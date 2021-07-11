@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {View} from 'react-native';
 import {Button, Header, Input, Selector, InputHour} from '../../components';
 import {
   Content,
@@ -15,6 +14,7 @@ import {
 } from '../../constants/selector';
 import {useAppContext} from '../../hooks/useAppContext';
 import {generateGuid} from '../../utils/guid';
+import colors from 'constants/colors';
 
 export const AddTask: React.FC = () => {
   const [title, setTitle] = React.useState('');
@@ -87,7 +87,11 @@ export const AddTask: React.FC = () => {
         />
       </Content>
       <ButtonContainer>
-        <Button text="Create a task" onPress={createTask} />
+        <Button
+          text="Create a task"
+          onPress={createTask}
+          color={colors.white}
+        />
       </ButtonContainer>
     </Container>
   );
