@@ -46,16 +46,6 @@ export const useTask = () => {
     }
   };
 
-  const unCompleteTask = async () => {
-    setLoading(true);
-    try {
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   React.useEffect(() => {
     getTasks();
   }, []);
@@ -63,7 +53,6 @@ export const useTask = () => {
   return {
     addTask,
     actionTask,
-    unCompleteTask,
     loading,
     tasks,
   };
