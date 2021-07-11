@@ -21,7 +21,7 @@ const App: React.FC = () => {
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <ThemeProvider theme={theme}>
         <AppContext.Provider value={{tasks, loading, addTask}}>
-          <SafeAreaView style={style.content}>
+          <SafeAreaView style={style.content} edges={['top', 'bottom']}>
             <RootNavigator />
           </SafeAreaView>
         </AppContext.Provider>
