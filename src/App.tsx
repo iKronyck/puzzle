@@ -6,21 +6,26 @@ import {
   initialWindowMetrics,
 } from 'react-native-safe-area-context';
 import {ThemeProvider} from 'styled-components/native';
+import {AppContext} from './context/AppContext';
 import {RootNavigator} from './router';
 import theme from './config/theme';
+import {useTask} from './hooks/useTask';
 
 const style = StyleSheet.create({
   content: {flex: 1},
 });
 
 const App: React.FC = () => {
+  const {tasks, loading, addTask} = useTask();
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <SafeAreaView style={style.content}>
-        <ThemeProvider theme={theme}>
-          <RootNavigator />
-        </ThemeProvider>
-      </SafeAreaView>
+      <ThemeProvider theme={theme}>
+        <AppContext.Provider value={{tasks, loading, addTask}}>
+          <SafeAreaView style={style.content}>
+            <RootNavigator />
+          </SafeAreaView>
+        </AppContext.Provider>
+      </ThemeProvider>
     </SafeAreaProvider>
   );
 };
