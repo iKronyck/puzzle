@@ -1,7 +1,7 @@
-import type {TextStyle} from 'react-native';
+import type {TextStyle, TextProps as TextProp} from 'react-native';
 import type {Theme} from '../../config/types';
 
-export interface TextProps {
+export interface TextProps extends TextProp {
   text: string;
   color?: string;
   style?: TextStyle;

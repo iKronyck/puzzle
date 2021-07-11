@@ -8,9 +8,14 @@ export const Text: React.FC<TextProps> = ({
   style = {},
   fontSize = 12,
   color = colors.black,
+  numberOfLines = 1,
 }) => {
   return (
-    <StyledText color={color} fontSize={fontSize} style={style}>
+    <StyledText
+      color={color}
+      fontSize={fontSize}
+      style={style}
+      numberOfLines={numberOfLines}>
       {text}
     </StyledText>
   );
