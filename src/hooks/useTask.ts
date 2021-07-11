@@ -4,14 +4,27 @@ import type {TasksProps} from '../context/types';
 
 export const useTask = () => {
   const [tasks, setTasks] = React.useState<Array<TasksProps>>([]);
+  const [completedTasks, setCompleted] = React.useState<Array<TasksProps>>([]);
+  const [unCompletedTasks, setUnCompleted] = React.useState<Array<TasksProps>>(
+    [],
+  );
+  const [favoriteTasks, setFavorites] = React.useState<Array<TasksProps>>([]);
   const [loading, setLoading] = React.useState(true);
 
   const getTasks = async () => {
     try {
       const response = await AsyncStorage.getItem('@tasks');
       if (response !== null) {
-        const parsedItem = JSON.parse(response);
+        const parsedItem: Array<TasksProps> = JSON.parse(response);
+        const completed = parsedItem.filter(task => task.isFinished === true);
+        const unCompleted = parsedItem.filter(
+          task => task.isFinished === false,
+        );
+        const favorites = parsedItem.filter(task => task.isFavorite === true);
         setTasks(parsedItem);
+        setCompleted(completed);
+        setUnCompleted(unCompleted);
+        setFavorites(favorites);
       }
     } catch (error) {
       console.error(error);
@@ -29,6 +42,7 @@ export const useTask = () => {
       console.error(error);
     } finally {
       setLoading(false);
+      getTasks();
     }
   };
 
@@ -38,6 +52,7 @@ export const useTask = () => {
       let allTasks = [...tasks];
       const index = allTasks.findIndex(task => task.id === id);
       allTasks[index].isFinished = !allTasks[index].isFinished;
+      await AsyncStorage.setItem('@tasks', JSON.stringify(allTasks));
       setTasks([...allTasks]);
     } catch (error) {
       console.error(error);
@@ -52,6 +67,9 @@ export const useTask = () => {
 
   return {
     addTask,
+    completedTasks,
+    unCompletedTasks,
+    favoriteTasks,
     actionTask,
     loading,
     tasks,

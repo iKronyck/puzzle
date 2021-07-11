@@ -3,6 +3,9 @@ import type {TasksProps} from './types';
 
 type TypeAppContext = {
   tasks: Array<TasksProps>;
+  completedTasks: Array<TasksProps>;
+  unCompletedTasks: Array<TasksProps>;
+  favoriteTasks: Array<TasksProps>;
   loading: boolean;
   addTask: (task: TasksProps) => void;
   actionTask: (id: string) => void;
@@ -13,4 +16,7 @@ export const AppContext = createContext<TypeAppContext>({
   loading: false,
   addTask: () => {},
   actionTask: () => {},
+  completedTasks: [],
+  unCompletedTasks: [],
+  favoriteTasks: [],
 });
