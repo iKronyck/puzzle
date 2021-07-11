@@ -1,5 +1,11 @@
 import * as React from 'react';
-import {View, FlatList, Dimensions, ActivityIndicator} from 'react-native';
+import {FlatList, Dimensions, ActivityIndicator} from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from 'react-native-reanimated';
+import {withBouncing} from 'react-native-redash';
 import {Button, Header, TaskItem, Text} from '../../components';
 import {useAppContext} from '../../hooks/useAppContext';
 import {
@@ -18,11 +24,34 @@ export const Home: React.FC<HomeProps> = ({navigation}) => {
   const [tabActive, setTabActive] = React.useState(0);
   const {tasks, completedTasks, unCompletedTasks, favoriteTasks, loading} =
     useAppContext();
+  const translateX = useSharedValue(0);
+
+  const {width} = Dimensions.get('screen');
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      width: width / 4,
+      backgroundColor: colors.black,
+      height: 3,
+      position: 'absolute',
+      borderTopLeftRadius: 10,
+      borderTopRightRadius: 10,
+      bottom: 0,
+      transform: [{translateX: translateX.value}],
+    };
+  });
+
+  const moveToTab = (numberTab: number) => {
+    const tabSize = width / 4;
+    translateX.value = withBouncing(withSpring(tabSize * numberTab), 0, width);
+    setTabActive(numberTab);
+  };
+
   return (
     <Container>
       <Header isHome />
       <TabContainer>
-        <ButtonTab onPress={() => setTabActive(0)}>
+        <ButtonTab onPress={() => moveToTab(0)}>
           <Text
             numberOfLines={1}
             text="All"
@@ -30,7 +59,7 @@ export const Home: React.FC<HomeProps> = ({navigation}) => {
             color={colors.gray}
           />
         </ButtonTab>
-        <ButtonTab onPress={() => setTabActive(1)}>
+        <ButtonTab onPress={() => moveToTab(1)}>
           <Text
             numberOfLines={1}
             text="Completed"
@@ -38,7 +67,7 @@ export const Home: React.FC<HomeProps> = ({navigation}) => {
             color={colors.gray}
           />
         </ButtonTab>
-        <ButtonTab onPress={() => setTabActive(2)}>
+        <ButtonTab onPress={() => moveToTab(2)}>
           <Text
             numberOfLines={1}
             text="Uncompleted"
@@ -46,7 +75,7 @@ export const Home: React.FC<HomeProps> = ({navigation}) => {
             color={colors.gray}
           />
         </ButtonTab>
-        <ButtonTab onPress={() => setTabActive(3)}>
+        <ButtonTab onPress={() => moveToTab(3)}>
           <Text
             numberOfLines={1}
             text="Favorite"
@@ -54,20 +83,7 @@ export const Home: React.FC<HomeProps> = ({navigation}) => {
             color={colors.gray}
           />
         </ButtonTab>
-        <View
-          style={{
-            width: Dimensions.get('screen').width / 4,
-            backgroundColor: colors.black,
-            height: 3,
-            position: 'absolute',
-            borderTopLeftRadius: 10,
-            borderTopRightRadius: 10,
-            bottom: 0,
-            transform: [
-              {translateX: (Dimensions.get('screen').width / 4) * tabActive},
-            ],
-          }}
-        />
+        <Animated.View style={animatedStyle} />
       </TabContainer>
       <DataContainer>
         <Content>
