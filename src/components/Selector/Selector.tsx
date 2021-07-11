@@ -120,6 +120,7 @@ export const Selector: React.FC<SelectorProps> = ({
               <ScrollView bounces={false} style={styles.scrollView}>
                 {options?.map(data => (
                   <Pressable
+                    key={data.id}
                     onPress={() => {
                       setValue(data.text);
                       setShowModal(false);

@@ -10,7 +10,7 @@ export const remindOptions = [
   {id: 1, text: '5 minutes early'},
   {id: 2, text: '10 minutes early'},
   {id: 3, text: '30 minutes early'},
-  {id: 1, text: '1 hour early'},
+  {id: 4, text: '1 hour early'},
 ];
 
 export const repeatOptions = [
@@ -19,5 +19,5 @@ export const repeatOptions = [
   {id: 3, text: 'Every Wednesday'},
   {id: 4, text: 'Every Thursday'},
   {id: 5, text: 'Every Friday'},
-  {id: 1, text: 'Weekly'},
+  {id: 6, text: 'Weekly'},
 ];
