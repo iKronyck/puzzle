@@ -16,11 +16,12 @@ const style = StyleSheet.create({
 });
 
 const App: React.FC = () => {
-  const {tasks, loading, addTask} = useTask();
+  const {tasks, loading, addTask, actionTask} = useTask();
+  console.log(tasks, 'RES');
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <ThemeProvider theme={theme}>
-        <AppContext.Provider value={{tasks, loading, addTask}}>
+        <AppContext.Provider value={{tasks, loading, addTask, actionTask}}>
           <SafeAreaView style={style.content} edges={['top', 'bottom']}>
             <RootNavigator />
           </SafeAreaView>
