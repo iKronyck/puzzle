@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Touchable, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {CheckBox, Container, UnSelected} from './TaskItem.styles';
 import {Text} from '../Text';
@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     color: colors.gray,
     marginLeft: 10,
     fontSize: 14,
+    flex: 1,
   },
 });
 
@@ -20,7 +21,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({task}) => {
   const {actionTask} = useAppContext();
   return (
     <Container>
-      <CheckBox onPress={() => actionTask(task.id)}>
+      <CheckBox onPress={() => actionTask(task.id, 'isFinished')}>
         {task.isFinished ? (
           <Icon name="done" size={16} color={colors.white} />
         ) : (
@@ -28,6 +29,13 @@ export const TaskItem: React.FC<TaskItemProps> = ({task}) => {
         )}
       </CheckBox>
       <Text text={task.title} style={styles.title} numberOfLines={1} />
+      <TouchableOpacity onPress={() => actionTask(task.id, 'isFavorite')}>
+        <Icon
+          name={task.isFavorite ? 'favorite' : 'favorite-border'}
+          color={colors.red}
+          size={22}
+        />
+      </TouchableOpacity>
     </Container>
   );
 };

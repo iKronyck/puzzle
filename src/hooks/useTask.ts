@@ -46,12 +46,12 @@ export const useTask = () => {
     }
   };
 
-  const actionTask = async (id: string) => {
+  const actionTask = async (id: string, key: 'isFavorite' | 'isFinished') => {
     setLoading(true);
     try {
-      let allTasks = [...tasks];
+      let allTasks: Array<TasksProps> = [...tasks];
       const index = allTasks.findIndex(task => task.id === id);
-      allTasks[index].isFinished = !allTasks[index].isFinished;
+      allTasks[index][key] = !allTasks[index][key];
       const completed = allTasks.filter(task => task.isFinished === true);
       const unCompleted = allTasks.filter(task => task.isFinished === false);
       const favorites = allTasks.filter(task => task.isFavorite === true);

@@ -8,7 +8,7 @@ type TypeAppContext = {
   favoriteTasks: Array<TasksProps>;
   loading: boolean;
   addTask: (task: TasksProps) => void;
-  actionTask: (id: string) => void;
+  actionTask: (id: string, key: 'isFavorite' | 'isFinished') => void;
 };
 
 export const AppContext = createContext<TypeAppContext>({
