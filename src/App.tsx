@@ -25,7 +25,6 @@ const App: React.FC = () => {
     addTask,
     actionTask,
   } = useTask();
-  console.log(tasks, 'RES');
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <ThemeProvider theme={theme}>
