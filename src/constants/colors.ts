@@ -9,6 +9,7 @@ const colors = {
   backgroundGray: '#FAF9FA',
   border: '#F4F4F5',
   white: '#FFF',
+  opacity: 'rgba(0, 0, 0, 0.5)',
 };
 
 export default colors;
