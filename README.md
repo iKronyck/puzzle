@@ -6,7 +6,7 @@
 </h2> 
 
 
-# iOS Screenshots
+# iOS Screenshots [See a Video](https://drive.google.com/file/d/1sHbtCB0eCka1Hv9mX6u6Bb2mycdIXMBT/view?usp=sharing)
 
 ---
 
@@ -14,7 +14,7 @@
 |:-:|:-:|
 | ![Simulator Screen Shot - iPhone 12 - 2021-07-11 at 15 00 43](https://user-images.githubusercontent.com/12678606/125209939-c9c48b80-e259-11eb-8182-8b313d40018d.png) | ![Simulator Screen Shot - iPhone 12 - 2021-07-11 at 15 09 51](https://user-images.githubusercontent.com/12678606/125209997-19a35280-e25a-11eb-9bc5-8cb2443f8949.png)
 
-# Android Screenshots
+# Android Screenshots [See a Video](https://drive.google.com/file/d/1AUnaAgmRGsaUxS9Rby6YioXjJza0Vc4C/view?usp=sharing)
 
 ---
 
