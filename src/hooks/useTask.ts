@@ -19,10 +19,10 @@ export const useTask = () => {
   const getTasks = async () => {
     try {
       const response = await AsyncStorage.getItem('@tasks');
+      console.log(response, 'RESPONSE');
       if (response && response.length > 0) {
         console.log('yep');
       }
-      console.log(response);
     } catch (error) {
       console.error(error);
     } finally {
@@ -30,21 +30,11 @@ export const useTask = () => {
     }
   };
 
-  const addTask = async () => {
+  const addTask = async (task: TasksProps) => {
     setLoading(true);
-    const preTask = {
-      title: 'Design',
-      deadLine: '2021-10-02',
-      startTime: '11 AM',
-      endTime: '14:00 PM',
-      remind: '10 minutes early',
-      repeat: 'Weakly',
-      createdAt: new Date(),
-      isFavorite: false,
-    };
     try {
-      await AsyncStorage.setItem('@tasks', JSON.stringify(preTask));
-      setTasks([...tasks, preTask]);
+      await AsyncStorage.setItem('@tasks', JSON.stringify(task));
+      setTasks([...tasks, task]);
     } catch (error) {
       console.error(error);
     } finally {
